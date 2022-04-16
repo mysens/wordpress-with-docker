@@ -1,39 +1,60 @@
 version: "3"
 services:
 
-  # db:
-  #   container_name: mysql-8.0
-  #   image: mysql:8.0
-  #   ports:
-  #     - "3306:3306"
-  #   command:
-  #     - --default_authentication_plugin=mysql_native_password
-  #     - --character-set-server=utf8mb4
-  #     - --collation-server=utf8mb4_general_ci
-  #   volumes:
-  #     - db_data:/var/lib/mysql
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: 123123#
-  #     MYSQL_DATABASE: wordpress
-  #     MYSQL_USER: wordpress
-  #     MYSQL_PASSWORD: wordpress123
+  db:
+    container_name: mysql-8.0
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    command:
+      - --default_authentication_plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123123#
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress123
 
   php-7.4:
     container_name: php-7.4
-    image: php:7.4.28-fpm
+    build: ./php-7.4/.
     ports:
       - "9000:9000"
+    networks:
+      my-net:
+        ipv4_address: 172.18.0.2
+    volumes:
+      - wordpress:/var/www/html
     restart: always
 
 
-  wordpress-nginx:
+  my-wordpress:
     container_name: test
     depends_on:
       - php-7.4
     build: ./wordpress-nginx/.
     ports:
       - "8000:8000"
+    networks:
+      my-net:
+        ipv4_address: 172.18.0.3
+    volumes:
+      - wordpress:/var/www/html
     restart: always
     environment:
       - SERVER_NAME=mysens.club
+
+networks:
+  my-net:
+    ipam:
+      config:
+      - subnet: 172.18.0.0/24
+        gateway: 172.18.0.1
+
+volumes:
+  wordpress: 
+  db_data:

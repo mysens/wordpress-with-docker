@@ -31,7 +31,6 @@ services:
         ipv4_address: 172.18.0.2
     volumes:
       - wordpress:/var/www/html
-      - /data/docker/etc/php-7.4/php.ini:/usr/local/etc/php/php.ini
     restart: always
 
 

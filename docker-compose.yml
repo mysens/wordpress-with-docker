@@ -8,6 +8,8 @@ services:
       - 80:80
     volumes:
       - /data/docker/nginx:/etc/nginx
+    networks:
+      my-net:
 
   db:
     container_name: mysql-8.0
@@ -20,6 +22,8 @@ services:
       - --collation-server=utf8mb4_general_ci
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      my-net:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD:

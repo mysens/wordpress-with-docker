@@ -41,7 +41,7 @@ services:
       - mysql-8.0
     build: ./my-wordpress/.
     ports:
-      - "8000:8000"
+      - "80:80"
     networks:
       my-net:
         ipv4_address: 172.18.0.3

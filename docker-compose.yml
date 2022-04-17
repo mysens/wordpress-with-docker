@@ -1,19 +1,5 @@
 version: "3"
 services:
-
-  my-nginx:
-    container_name: my-nginx
-    image: nginx:stable
-    ports:
-      - 80:80
-    volumes:
-      - /data/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /data/docker/nginx/conf.d:/etc/nginx/conf.d
-      - /data/docker/nginx/log:/var/log/nginx
-    networks:
-      my-net:
-        ipv4_address: 172.18.0.5
-
   db:
     container_name: mysql-8.0
     image: mysql:8.0

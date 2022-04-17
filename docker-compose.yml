@@ -8,6 +8,7 @@ services:
       - 80:80
     volumes:
       - /data/docker/nginx:/etc/nginx
+      - /data/docker/nginx/log:/var/log/nginx
     networks:
       my-net:
         ipv4_address: 172.18.0.5
@@ -47,7 +48,7 @@ services:
 
 
   my-wordpress:
-    container_name: test
+    container_name: my-wordpress
     depends_on:
       - php-7.4
       - mysql-8.0

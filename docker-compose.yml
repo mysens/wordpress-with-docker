@@ -33,6 +33,27 @@ services:
       - wordpress:/var/www/html
     restart: always
 
+  nginx-stable:
+    container_name: nginx-stable
+    depends_on:
+      - php-7.4
+    build: ./nginx/.
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      my-net:
+        ipv4_address: 172.18.0.3
+    volumes:
+      - wordpress:/var/www/html
+      - nginx-config:/etc/nginx
+    restart: always
+    environment:
+      SERVER_NAME:
+      LEGO_SECRET_ID:
+      LEGO_SECRET_KEY:
+      LEGO_EMAIL:
+      USE_SSL:
 
   my-wordpress:
     container_name: my-wordpress
@@ -40,19 +61,9 @@ services:
       - php-7.4
       - mysql-8.0
     build: ./my-wordpress/.
-    ports:
-      - "80:80"
-    networks:
-      my-net:
-        ipv4_address: 172.18.0.3
     volumes:
       - wordpress:/var/www/html
-    restart: always
-    environment:
-      SERVER_NAME:
-      LEGO_SECRET_ID:
-      LEGO_SECRET_KEY:
-      LEGO_EMAIL:
+    #restart: always
 
 networks:
   my-net:
@@ -64,3 +75,4 @@ networks:
 volumes:
   wordpress: 
   db_data:
+  nginx-config:

@@ -50,6 +50,9 @@ services:
     restart: always
     environment:
       SERVER_NAME:
+      LEGO_SECRET_ID:
+      LEGO_SECRET_KEY:
+      LEGO_EMAIL:
 
 networks:
   my-net:

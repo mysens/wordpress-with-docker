@@ -37,7 +37,10 @@ services:
     container_name: nginx-stable
     depends_on:
       - php-7.4
-    build: ./nginx/.
+    build: 
+      context: ./nginx/.
+      args:
+        - mirrors=${mirrors}
     ports:
       - "80:80"
       - "443:443"
@@ -60,7 +63,10 @@ services:
     depends_on:
       - php-7.4
       - mysql-8.0
-    build: ./my-wordpress/.
+    build: 
+      context: ./my-wordpress/.
+      args:
+        - mirrors=${mirrors}
     volumes:
       - wordpress:/var/www/html
     #restart: always

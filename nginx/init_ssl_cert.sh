@@ -3,7 +3,7 @@ if [ $USE_SSL -le 0 ];then
 echo "$0: nginx config ssl closed"
 exit 0
 fi
-cd `/etc/nginx/cert`
+cd /etc/nginx/cert
 if [ -f ".lego/certificates/*.crt" ]; then
 echo "$0 crt file exist, try to renew"
 ./lego --email $LEGO_EMAIL --dns $LEGO_DNS --domains="*.$SERVER_NAME" --domains="$SERVER_NAME" \

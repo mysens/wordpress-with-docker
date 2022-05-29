@@ -16,6 +16,7 @@ services:
         ipv4_address: 172.18.0.4
     restart: always
     environment:
+      TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE:
       MYSQL_USER:
@@ -32,6 +33,8 @@ services:
     volumes:
       - wordpress:/var/www/html
     restart: always
+    environment:
+      TZ: Asia/Shanghai
 
   nginx-stable:
     container_name: nginx-stable
@@ -52,6 +55,7 @@ services:
       - nginx-config:/etc/nginx
     restart: always
     environment:
+      TZ: Asia/Shanghai
       SERVER_NAME:
       TENCENTCLOUD_SECRET_ID:
       TENCENTCLOUD_SECRET_KEY:
@@ -71,6 +75,8 @@ services:
     volumes:
       - wordpress:/var/www/html
     #restart: always
+    environment:
+      TZ: Asia/Shanghai
 
 networks:
   my-net:

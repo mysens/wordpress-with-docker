@@ -2,10 +2,15 @@
 docker + LNMP + wordpress
 
 Docker version 20.10.14
+
 Docker Compose version v2.2.3
+
 Wordpress 5.9.3
+
 PHP 7.4
+
 Mysql 8.0
+
 Nginx stable
 
 ### before run add .env file like

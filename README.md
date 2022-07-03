@@ -1,3 +1,5 @@
+中文用户可以参考 https://www.mysens.club/2022/07/01/docker-nginx-wordpress-build-web/
+
 ## wordpress depoly
 docker + LNMP + wordpress
 

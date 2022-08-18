@@ -18,6 +18,6 @@ server {
 }"  > /etc/nginx/conf.d/${SERVER_NAME}_ssl_redirect.conf
 
 
-echo "0 */12 * * * /docker-entrypoint.d/init_ssl_cert.sh" >> cron_conf && crontab cron_conf && rm -f cron_conf;
+echo "0 */12 * * * sh /docker-entrypoint.d/init_ssl_cert.sh" >> cron_conf && crontab cron_conf && rm -f cron_conf;
 fi
 

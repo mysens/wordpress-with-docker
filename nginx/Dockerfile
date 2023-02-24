@@ -10,6 +10,8 @@ RUN sed -i "s@http://\(deb\|security\).debian.org@https://mirrors.$mirrors.com@g
 
 COPY /etc/nginx /etc/nginx
 
-COPY *.sh /docker-entrypoint.d/
+COPY init_param.sh /docker-entrypoint.d/init_param.sh
+
+COPY init_ssl_cert.sh /etc/nginx/cert/init_ssl_cert.sh
 
 COPY lego /etc/nginx/cert/lego

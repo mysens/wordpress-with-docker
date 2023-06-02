@@ -18,7 +18,7 @@ server {
 }"  > /etc/nginx/conf.d/${SERVER_NAME}_ssl_redirect.conf
 
 
-echo "0 */12 * * * sh /etc/nginx/cert/init_ssl_cert.sh > /etc/nginx/cert/cert_renew.log" >> cron_conf && crontab cron_conf && rm -f cron_conf;
+echo "0 * * * * sh /etc/nginx/cert/init_ssl_cert.sh > /etc/nginx/cert/cert_renew.log 2>&1" >> cron_conf && crontab cron_conf && rm -f cron_conf;
 service cron restart
 fi
 

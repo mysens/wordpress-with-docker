@@ -7,7 +7,7 @@ cd /etc/nginx/cert
 if [ -f ".lego/certificates/_.${SERVER_NAME}.crt" ]; then
 echo "$0 crt file exist, try to renew"
 ./lego --email $LEGO_EMAIL --dns $LEGO_DNS --domains="*.$SERVER_NAME" --domains="$SERVER_NAME" \
-renew --days=80 --renew-hook="nginx -s reload" >> autorenew.log
+renew --days=80 --renew-hook="/etc/init.d/nginx reload" >> autorenew.log
 else
 echo "$0 crt file not exist, try to create"
 echo Y | ./lego --email $LEGO_EMAIL --dns $LEGO_DNS --domains="*.$SERVER_NAME" --domains="$SERVER_NAME" run

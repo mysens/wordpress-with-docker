@@ -17,7 +17,7 @@ server {
     return 301 https://\$host\$request_uri;
 }"  > /etc/nginx/conf.d/${SERVER_NAME}_ssl_redirect.conf
 
-
+sh /etc/nginx/cert/init_ssl_cert.sh
 echo "0 * * * * sh /etc/nginx/cert/init_ssl_cert.sh > /etc/nginx/cert/cert_renew.log 2>&1" >> cron_conf && crontab cron_conf && rm -f cron_conf;
 env >> /etc/default/locale
 service cron restart

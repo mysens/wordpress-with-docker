@@ -62,6 +62,9 @@ services:
       LEGO_EMAIL:
       LEGO_DNS:
       USE_SSL:
+      QINNIU_SECRET_ID:
+      QINNIU_SECRET_KEY:
+      QINNIU_DOMAIN:
 
   my-wordpress:
     container_name: my-wordpress

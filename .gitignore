@@ -75,3 +75,5 @@ fabric.properties
 
 .lego
 
+*.sql
+*.zip

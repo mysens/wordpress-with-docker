@@ -22,9 +22,9 @@ services:
       MYSQL_USER:
       MYSQL_PASSWORD:
 
-  php-7.4:
-    container_name: php-7.4
-    build: ./php-7.4/.
+  php-fpm:
+    container_name: php-fpm
+    build: ./php-fpm/.
     ports:
       - "9000:9000"
     networks:
@@ -39,7 +39,7 @@ services:
   nginx-stable:
     container_name: nginx-stable
     depends_on:
-      - php-7.4
+      - php-fpm
     build: 
       context: ./nginx/.
       args:
@@ -69,7 +69,7 @@ services:
   my-wordpress:
     container_name: my-wordpress
     depends_on:
-      - php-7.4
+      - php-fpm
       - mysql-8.0
     build: 
       context: ./my-wordpress/.

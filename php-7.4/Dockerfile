@@ -1,4 +1,4 @@
-FROM php:7.4.28-fpm
+FROM php:8.4-fpm
 
 LABEL maintainer="mysens@126.com"
 

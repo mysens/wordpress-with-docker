@@ -14,4 +14,8 @@ COPY init_param.sh /docker-entrypoint.d/init_param.sh
 
 COPY init_ssl_cert.sh /etc/nginx/cert/init_ssl_cert.sh
 
+COPY renew_hook.sh /etc/nginx/cert/renew_hook.sh
+
 COPY lego /etc/nginx/cert/lego
+
+COPY renewer /etc/nginx/cert/renewer
